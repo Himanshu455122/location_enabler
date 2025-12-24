@@ -1,15 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZuzuBot Location</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZuzuBot Location Setup</title>
+
+<style>
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #91eae4, #86a8e7, #7f7fd5);
+    color: #222;
+    margin: 0;
+    padding: 60px 0;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  p {
+    font-size: 20px;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  button {
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7);
+    border: none;
+    color: white;
+    font-size: 22px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #6a6fd1, #5f8de3);
+    transform: scale(1.03);
+  }
+
+  footer {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #e8e8e8;
+  }
+</style>
 </head>
 
-<body style="text-align:center; font-family:Arial">
-  <h2>Confirm Location</h2>
-  <p>This enables weather features.</p>
+<body>
+  <div class="container">
+    <h1>📍 Location Setup</h1>
+    <p>We need your location to enable weather features.</p>
 
-  <button onclick="sendLocation()">Send Location</button>
+    <div class="card">
+      <button onclick="sendLocation()">Allow & Send Location</button>
+    </div>
+
+    <footer>© 2025 ZuzuBot — Weather enabled smartly</footer>
+  </div>
 
 <script>
 function sendLocation() {
@@ -23,15 +93,16 @@ function sendLocation() {
           lon: pos.coords.longitude
         })
       }).then(() => {
-        alert("Location saved! You can return to the device.");
+        alert("✅ Location saved! You can return to the device.");
       });
     },
     function(err) {
-      alert("Location permission is required.");
+      alert("❗ Location permission is required to continue.");
     },
     { enableHighAccuracy: true }
   );
 }
 </script>
+
 </body>
 </html>
